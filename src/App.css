@@ -1,0 +1,170 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Roboto:wght@300&display=swap');
+
+/* Global CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+input:focus {outline: none}
+
+/* HEADER */
+.header {
+  background-color: #38fcb4;
+  padding: 20px;
+}
+.header h1 {
+  text-align: center;
+  font-family: 'Merriweather Sans', sans-serif;
+  color: #fff;
+}
+
+/* Rating Form */
+.rating {
+  font-family: Roboto;
+  margin: 50px auto 20px auto;
+  width: 700px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.rating-form {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 0 -2px;
+}
+
+.rating li {
+  position: relative;
+  background: #f4f4f4;
+  width: 50px;
+  list-style: none;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  font-size: 19px;
+  border: 1px #eee solid;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.rating li label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 12px 10px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.rating li:hover {
+  background: #38fcb4;
+  color: #fff;
+}
+
+[type='radio'] {
+  opacity: 0;
+}
+
+[type='radio']:checked ~ label {
+  background: #38fcb4;
+  color: #fff;
+}
+
+/* RATING MESSAGE */
+.rating-message {
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  font-family: Roboto;
+}
+
+.rating-message input {
+  display: block;
+  margin: 20px 0;
+}
+
+.rating-message #text {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #f2f2f2;
+}
+
+.rating-message button {
+  padding: 13px 50px;
+  background-color: rgba(0, 0, 0, .7);
+  color: #fff;
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.rating-message button:disabled {
+  pointer-events: none;
+  background-color: #ddd;
+}
+
+.rating-message button:hover {
+  background-color: #38fcb4;
+}
+
+/* Message */
+.message {
+  width: 700px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 15px;
+  font-family: Roboto;
+}
+
+/* Feedback List */
+.feedback-list {
+  width: 700px;
+  margin: 20px auto;
+  font-family: Roboto;
+}
+
+.feedback {
+  background-color: #fff;
+  padding: 50px 30px 30px 30px;
+  margin: 20px 0;
+  line-height: 1.4;
+  position: relative;
+}
+
+.feedback .feedback-num {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  left: 0;
+  padding: 10px 30px;
+  color: #38fcb4;
+}
+
+.feedback .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  background-color: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #ddd;
+  transition: .3s;
+}
+
+.feedback button.close:hover {color: red;}
