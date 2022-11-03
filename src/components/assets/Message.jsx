@@ -1,13 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
+import FeedbackContext from '../../context/FeedbackContext';
+import MessageCard from '../shared/MessageCard';
 
-function Message({message}) {
+function Message() {
+  const { message } = useContext(FeedbackContext);
+
   return (
     <AnimatePresence>
       {message && 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} >
-          <div className="message">
+          <MessageCard>
             <p>{message}</p>
-          </div>
+          </MessageCard>
         </motion.div>
       }
     </AnimatePresence>
