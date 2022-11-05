@@ -14,6 +14,18 @@ body {
 
 input:focus {outline: none}
 
+.spinner {
+  width: 100vw;
+}
+
+.spinner img {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 /* HEADER */
 .header {
   background-color: #38fcb4;

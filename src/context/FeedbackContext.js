@@ -1,25 +1,48 @@
-import { createContext, useState } from "react";
-import FeedbackData from "../data/FeedbackData";
-import { v4 as uuidv4 } from 'uuid'
+import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-    const [ feedback, setFeedback ] = useState(FeedbackData);
+    const [ feedback, setFeedback ] = useState([])
     const [ text, setText ] = useState('');
     const [ rating, setRating ] = useState(5);
     const [ btnDisabled, setBtnDisabled ] = useState(true);
     const [ message, setMessage ] = useState('');
+    const [ loading, setLoading ] = useState(true);
+
+    useEffect(() => {
+      fetchFeedback();
+    }, [])
+
+    // Fetch feedback
+    const fetchFeedback = async () => {
+      const res = await fetch(`/feedback?_sort=id&_order=desc`);
+      const data = await res.json();
+
+      setFeedback(data);
+      setLoading(false);
+    }
 
     // Add Feedback Function
-    const addFeedback = newFeedback => {
-        newFeedback.id = uuidv4();
-        setFeedback([newFeedback, ...feedback]);
+    const addFeedback = async newFeedback => {
+      const res = await fetch('/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newFeedback)
+      });
+
+      const data = await res.json();
+
+      setFeedback([data, ...feedback]);
     }
 
     // Delete feedback function
-    const deleteFeedback = (id) => {
+    const deleteFeedback = async (id) => {
         if(window.confirm('Are you sure you want to delete this feedback?')) {
+          await fetch(`/feedback/${id}`, { method: 'DELETE' });
+
           setFeedback(feedback.filter(item => item.id !== id));
         }
     }
@@ -62,6 +85,7 @@ export const FeedbackProvider = ({ children }) => {
         text,
         message,
         btnDisabled,
+        loading,
         setRating,
         addFeedback,
         deleteFeedback,

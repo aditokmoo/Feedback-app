@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import FeedbackRating from "./form/FeedbackRating";
 import FeedbackMessage from "./form/FeedbackMessage";
 import Message from "./assets/Message";
