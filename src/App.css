@@ -180,3 +180,12 @@ input:focus {outline: none}
 }
 
 .feedback button.close:hover {color: red;}
+
+/* MEDIA QUERY */
+@media(max-width: 720px) {
+  .forms { padding: 0 20px }
+  .rating { width: inherit }
+  .rating-message { width: inherit }
+  .message { width: inherit; margin: 20px }
+  .feedback-list { width: inherit; margin: 20px }
+}
