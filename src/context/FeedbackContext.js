@@ -1,4 +1,6 @@
 import { createContext, useState, useEffect } from "react";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const FeedbackContext = createContext();
 
@@ -36,12 +38,34 @@ export const FeedbackProvider = ({ children }) => {
       const data = await res.json();
 
       setFeedback([data, ...feedback]);
+
+      toast.success('Feedback added', {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
     }
 
     // Delete feedback function
     const deleteFeedback = async (id) => {
         if(window.confirm('Are you sure you want to delete this feedback?')) {
           await fetch(`/feedback/${id}`, { method: 'DELETE' });
+
+          toast.success('Feedback deleted', {
+            position: "bottom-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
 
           setFeedback(feedback.filter(item => item.id !== id));
         }
